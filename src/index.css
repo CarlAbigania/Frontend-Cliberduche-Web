@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply the font tokens globally and set base text colors */
+@layer base {
+    body {
+        @apply font-body text-gray-900 dark:text-gray-100;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-heading;
+    }
+
+    small,
+    .text-xs {
+        @apply text-sm;
+    }
+}
+
+:root {
+    --grid-green: rgba(22, 163, 74, 0.20);
+    --grid-blue: rgba(37, 99, 235, 0.06);
+}
+
+.dark {
+    --grid-green: rgba(255, 255, 255, 0.06);
+    --grid-blue: rgba(200, 220, 255, 0.05);
+}
+
+/* ===== CALENDAR AVAILABILITY HIGHLIGHTING ===== */
+.react-calendar__tile.has-availability {
+    background-color: #e6f7ff;
+    border-radius: 50%;
+    font-weight: bold;
+    color: #0077b6;
+}
+
+.dark .react-calendar__tile.has-availability {
+    background-color: #1e3a5f;
+    color: #90d0ff;
+}
+
+/* Make the react-calendar adapt to dark mode */
+.dark .react-calendar {
+    background: #1f2937;
+    color: #e5e7eb;
+    border-color: #374151;
+}
+
+.dark .react-calendar__navigation button {
+    color: #e5e7eb;
+}
+
+.dark .react-calendar__navigation button:enabled:hover,
+.dark .react-calendar__navigation button:enabled:focus {
+    background-color: #374151;
+}
+
+.dark .react-calendar__month-view__weekdays__weekday {
+    color: #9ca3af;
+}
+
+.dark .react-calendar__tile {
+    background: transparent;
+    color: #e5e7eb;
+}
+
+.dark .react-calendar__tile--active {
+    background: #2563eb !important;
+    color: white;
+}
+
+.dark .react-calendar__tile--now {
+    background: #2d3748;
+}
+
+.react-calendar.small-calendar {
+    width: 100%;
+    font-size: 0.9rem;
+    background: transparent;
+    border: none;
+}
+
+/* ===== MODERN SCROLLBAR (light & dark) ===== */
+
+/* Light mode scrollbar */
+::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0b2545;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #1f7a8c, #176072);
+    border-radius: 10px;
+    border: 2px solid #0b2545;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #2ab39b, #1f7a8c);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: #2ab39b;
+}
+
+::-webkit-scrollbar-corner {
+    background: #0b2545;
+}
+
+/* Firefox light mode */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #1f7a8c #0b2545;
+}
+
+/* Dark mode scrollbar overrides */
+.dark ::-webkit-scrollbar-track {
+    background: #1a2a3a;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: linear-gradient(180deg, #3a9b9c, #2a7a8c);
+    border-color: #1a2a3a;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(180deg, #4abfb0, #3a9b9c);
+}
+
+.dark ::-webkit-scrollbar-thumb:active {
+    background: #4abfb0;
+}
+
+.dark ::-webkit-scrollbar-corner {
+    background: #1a2a3a;
+}
+
+/* Firefox dark mode */
+.dark * {
+    scrollbar-color: #3a9b9c #1a2a3a;
+}
+
+/* ===== FIXED GRID BACKGROUND (theme‑aware) ===== */
+.grid-bg {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -10;
+
+    background-image:
+        linear-gradient(to right, rgba(22, 163, 74, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(22, 163, 74, 0.08) 1px, transparent 1px),
+        linear-gradient(to right, rgba(37, 99, 235, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(37, 99, 235, 0.06) 1px, transparent 1px);
+
+    background-size:
+        160px 160px,
+        160px 160px,
+        20px 20px,
+        20px 20px;
+
+    background-repeat: repeat;
+}
+
+/* Dark mode grid lines – softer white/gray */
+.dark .grid-bg {
+    background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+        linear-gradient(to right, rgba(200, 220, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(200, 220, 255, 0.05) 1px, transparent 1px);
+}
+
+/* ===== SMOOTH THEME TRANSITIONS ===== */
+* {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+/* Disable transitions briefly on page load to avoid flicker */
+.no-transition * {
+    transition: none !important;
+}

@@ -1,0 +1,107 @@
+/* Homepage.css */
+
+@keyframes pan {
+    0% {
+        transform: translateX(-2%) scale(1.05);
+    }
+
+    50% {
+        transform: translateX(2%) scale(1.05);
+    }
+
+    100% {
+        transform: translateX(-2%) scale(1.05);
+    }
+}
+
+.animate-pan {
+    animation: pan 20s ease-in-out infinite alternate;
+}
+
+.perspective {
+    perspective: 1100px;
+    -webkit-perspective: 1100px;
+    perspective-origin: center;
+}
+
+.card-inner {
+    transform-style: preserve-3d;
+    will-change: transform;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.perspective .card-shadow {
+    box-shadow: 0 8px 30px rgba(11, 37, 69, 0.12);
+    transition: box-shadow 300ms ease;
+}
+
+.perspective:hover .card-inner {
+    transform: rotateX(6deg) rotateY(-6deg) translateZ(6px);
+}
+
+.perspective.w-72 {
+    width: 18rem;
+}
+
+.perspective.h-44 {
+    height: 11rem;
+}
+
+.perspective.h-64 {
+    height: 16rem;
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+.animation-delay-200 {
+    animation-delay: 0.2s;
+}
+
+.animation-delay-400 {
+    animation-delay: 0.4s;
+}
+
+.animation-delay-1000 {
+    animation-delay: 1s;
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== SITE WRAPPER ===== */
+.site-wrapper {
+    position: relative;
+    min-height: 100vh;
+    background: transparent;
+    /* let the grid show through */
+    z-index: 1;
+}
